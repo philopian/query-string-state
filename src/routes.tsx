@@ -7,32 +7,21 @@ import OtherPage from './pages/OtherPage'
 import ShoesPage from './pages/ShoesPage'
 import TopsPage from './pages/TopsPage'
 
+const routePaths = {
+  '/': <LandingPage />,
+  '/apparel': <ApparelPage />,
+  '/apparel/tops': <TopsPage />,
+  '/apparel/shoes': <ShoesPage />,
+  '/apparel/:type': <OtherPage />,
+}
+
+const children = Object.entries(routePaths).map(([path, element]) => ({ path, element }))
+
 const routes: RouteObject[] = [
   {
     path: '/',
     element: <PageTemplate />,
-    children: [
-      {
-        path: '/', // yes, again
-        element: <LandingPage />,
-      },
-      {
-        path: '/apparel',
-        element: <ApparelPage />,
-      },
-      {
-        path: '/apparel/tops',
-        element: <TopsPage />,
-      },
-      {
-        path: '/apparel/shoes',
-        element: <ShoesPage />,
-      },
-      {
-        path: '/apparel/:type',
-        element: <OtherPage />,
-      },
-    ],
+    children,
   },
 ]
 
