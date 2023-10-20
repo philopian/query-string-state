@@ -1,5 +1,7 @@
 import { useSearchParams } from 'react-router-dom'
 
+import { useGetApparel } from '../services/apparel/hooks'
+
 export default function TopsPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const size = searchParams.get('size')
@@ -11,6 +13,9 @@ export default function TopsPage() {
     setSearchParams({ ...Object.fromEntries(searchParams), color })
   const handleClearAll = () => setSearchParams({})
 
+  // Fetching data
+  const { data } = useGetApparel(size || undefined)
+
   return (
     <div className="flex flex-col items-center justify-center">
       <h1 className="text-3xl font-bold underline">TOPS</h1>
@@ -20,6 +25,8 @@ export default function TopsPage() {
       <div className="flex m-2 space-x-4">
         <ColorGroup {...{ color, handleColorClick }} />
       </div>
+
+      {/* <div>{data && color && `Price: $${data[color]?.price}`}</div> */}
 
       <br />
       <br />

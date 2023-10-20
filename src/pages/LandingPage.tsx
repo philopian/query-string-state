@@ -1,4 +1,4 @@
-export default function LandingPage(params: type) {
+export default function LandingPage() {
   return (
     <>
       <h1>LandingPage</h1>
