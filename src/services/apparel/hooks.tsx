@@ -1,7 +1,8 @@
 import { QueryKey, useQuery } from '@tanstack/react-query'
 
+import { request } from '@/utils/request'
+
 import { apparelUrl } from '.'
-import { request } from '../../utils/request'
 
 // export function useListApparel() {
 //   const queryKey: QueryKey = ['apparel']

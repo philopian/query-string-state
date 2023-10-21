@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom'
 
-import { useGetApparel } from '../services/apparel/hooks'
+import { useGetApparel } from '@/services/apparel/hooks'
 
 export default function TopsPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -26,7 +26,11 @@ export default function TopsPage() {
         <ColorGroup {...{ color, handleColorClick }} />
       </div>
 
-      {/* <div>{data && color && `Price: $${data[color]?.price}`}</div> */}
+      <div>
+        {data &&
+          color &&
+          `Price: $${(data as Record<string, { price: number } | undefined>)[color]?.price}`}
+      </div>
 
       <br />
       <br />
